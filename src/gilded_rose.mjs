@@ -35,7 +35,13 @@ export class Shop {
         this.items[i].quality = Math.min(this.items[i].quality, 50);
         this.items[i].sellIn -= 1;
 
-      } else {
+      } else if (this.items[i].name.substring(0, 8) == "Conjured") {
+        this.items[i].quality -= 2;
+        if (this.items[i].sellIn <= 0) {
+          this.items[i].quality -= 2;
+        }
+        this.items[i].sellIn -= 1;
+      }else {
         if (this.items[i].quality > 0) {
           this.items[i].quality = this.items[i].quality - 1;
         }

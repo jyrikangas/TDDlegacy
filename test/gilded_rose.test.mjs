@@ -186,4 +186,20 @@ describe("Gilded Rose", () => {
     console.log(items);
     expect(items[0].quality === 1).to.equal(true);
   })
+
 });
+describe("Conjured items", () => {
+  it("should lower in quality by 2 if sellIn is more than 0", () => {
+    const gildedRose = new Shop([new Item("Conjured Mana Cake", 3, 6)]);
+    const items = gildedRose.updateQuality();
+    console.log(items);
+    expect(items[0].quality === 4).to.equal(true);
+  })
+
+  it("should lower in quality by 4 if sellIn is less than 0", () => {
+    const gildedRose = new Shop([new Item("Conjured Mana Cake", -1, 6)]);
+    const items = gildedRose.updateQuality();
+    console.log(items);
+    expect(items[0].quality === 2).to.equal(true);
+  })
+})
